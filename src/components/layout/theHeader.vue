@@ -6,7 +6,7 @@
               <p class="bold">PhotosApp |</p>
               <p class="normal">share your moments</p>
           </Button></router-link>
-          <Button label="Submit" icon="pi pi-plus" class="p-button-rounded" />
+          <router-link to="/add-photo" class="no-underline"><Button label="Submit" icon="pi pi-plus" class="p-button-rounded" /></router-link>
       </div>
       <div>
           <categories-list
@@ -20,12 +20,12 @@ import { mapGetters } from 'vuex'
 import Button from 'primevue/button'
 import CategoriesList from './features/CategoriesList'
 export default {
-  name: 'AppHeader',
-  computed: mapGetters('Categories', { categories: 'Categories' }),
-  components: {
-    Button,
-    CategoriesList
-  }
+name: 'AppHeader',
+computed: mapGetters('Categories', { categories: 'Categories' }),
+components: {
+  Button,
+  CategoriesList
+}
 }
 </script>
 

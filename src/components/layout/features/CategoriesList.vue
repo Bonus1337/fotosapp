@@ -1,6 +1,6 @@
 <template>
   <ul class="categorie">
-   <router-link to="/photos/:category">
+   <router-link to="/photos/:category" class="no-underline">
      <Button
      :key="id"
      v-for="(category, id) in categories"
@@ -12,8 +12,8 @@
 import { mapGetters } from 'vuex'
 import Button from 'primevue/button'
 export default {
-name: 'CategoriesList',
-computed: mapGetters('Categories', { categories: 'Categories' }),
-components: { Button }
+  name: 'CategoriesList',
+  computed: mapGetters('Categories', { categories: 'Categories' }),
+  components: { Button }
 }
 </script>
