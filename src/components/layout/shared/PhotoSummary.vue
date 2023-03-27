@@ -1,35 +1,36 @@
 <template>
   <div>
-      <Card class="card">
-          <template #header>
-              <div class="image" >
-                <div class="vote">
-                  <p>{{ __v }}</p>
-                  <p>{{ votes }}</p>
-                  <Button icon="pi pi-star" class="p-button-rounded p-button-text p-button-lg" />
+      <router-link :to="singlePhoto" class="no-underline">
+        <Card class="card">
+            <template #header>
+                <div class="image" >
+                  <div class="vote">
+                    <p>{{ __v }}</p>
+                    <p>{{ votes }}</p>
+                    <Button icon="pi pi-star" class="p-button-rounded p-button-text p-button-lg" />
+                  </div>
+                  <img :src="src" style="height: 400px; object-fit: cover;" @click="$emit('vote', _id)"/>
+                  <slot></slot>
                 </div>
-                <img :src="src" style="height: 400px; object-fit: cover;" @click="$emit('vote', _id)"/>
-                <slot></slot>
-              </div>
+              </template>
+                <template #title>
+                  <div class="title">
+                      <p>{{ title }}</p>
+                  </div>
+              </template>
+            <template #subtitle>
+                <div class="subtitle">
+                    <p>{{ author }}</p>
+                </div>
             </template>
-            <template #title>
-              <div class="title">
-                <p>{{ _id }}</p>
-                  <p>{{ title }}</p>
-              </div>
-          </template>
-          <template #subtitle>
-              <div class="subtitle">
-                  <p>{{ author }}</p>
-              </div>
-          </template>
-          <template #footer>
-              <div class="footer">
-                  <Button icon="pi pi-bookmark" label="Fashion" class="p-button-rounded p-button-outlined" />
-              </div>
-          </template>
-      </Card>
-  </div>
+            <template #footer>
+                <div class="footer">
+                    <Button icon="pi pi-bookmark" class="p-button-outlined" style="width: 100px;">{{ category }}</Button>
+                </div>
+              </template>
+            </Card>
+          </router-link>
+          </div>
 </template>
 
 <script>
@@ -63,37 +64,45 @@ export default {
       type: Number
     }
   },
+  computed: {
+    singlePhoto () {
+      return `/${this._id}`
+    }
+  },
   components: { Card, Button }
 }
 </script>
 
 <style lang="scss" scoped>
 .card {
-border-radius: 15px;
-margin-left: 5px;
-margin-top: 5px;
-max-height: 700px;
+  border-radius: 15px;
+  margin-left: 5px;
+  margin-top: 5px;
+  max-height: 600px;
+  min-height: 600px;
 }
 .image {
-  position: relative;
-  display: flex;
-  .vote {
-      position: absolute;
-      margin-left: 180px;
-      display: flex;
-      align-items: center;
-      p {
-          font-size: 18px;
-      }
-  }
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    height: 100%;
+    .vote {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        p {
+            font-size: 18px;
+        }
+    }
 }
 .title {
-  margin-top: -15px;
+    margin-top: -15px;
 }
 .subtitle {
-  margin-top: -15px;
+    margin-top: -15px;
 }
 .footer {
-  margin-top: -30px;
+    margin-top: -30px;
 }
 </style>

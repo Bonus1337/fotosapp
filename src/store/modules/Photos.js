@@ -10,7 +10,9 @@ export default {
       error: false,
       success: false
     },
-    allPhotosLoaded: false
+    allPhotosLoaded: false,
+    singlePhoto: null,
+    loading: false
   },
   getters: {
     Photos (state) {
@@ -21,6 +23,12 @@ export default {
     },
     allPhotosLoaded (state) {
       return state.allPhotosLoaded
+    },
+    singlePhoto (state) {
+      return state.singlePhoto
+    },
+    loading (state) {
+      return state.loading
     }
   },
   mutations: {
@@ -55,8 +63,16 @@ export default {
       state.allPhotosLoaded = !state.allPhotosLoaded
     },
     ADD_VOTE (state, _id) {
-      state.photos._id = _id
-      console.log(state.photos._id)
+      const photo = state.photos.find(photo => photo._id === _id)
+      if (photo) {
+        photo.votes++
+      }
+    },
+    SET_SINGLE_PHOTO (state, photo) {
+      state.singlePhoto = photo
+    },
+    SET_LOADING (state, loading) {
+      state.loading = loading
     }
   },
   actions: {
@@ -91,10 +107,25 @@ export default {
     },
 
     addVote ({ commit }, _id) {
-      axios.put(`${apiUrl}/photos/vote/${_id}`, _id)
+      axios.put(`${apiUrl}/photos/vote/${_id}`)
       commit('ADD_VOTE', _id)
       console.log('addvote')
       console.log(_id)
+    },
+
+    fetchSinglePhoto ({ commit }, _id) {
+      commit('SET_LOADING', true)
+      axios.get(`${apiUrl}/photos/${_id}`)
+        .then(response => {
+          commit('SET_SINGLE_PHOTO', response.data)
+          commit('SET_LOADING', false)
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.error(error)
+          commit('SET_SINGLE_PHOTO', null)
+          commit('SET_LOADING', false)
+        })
     }
   }
 }

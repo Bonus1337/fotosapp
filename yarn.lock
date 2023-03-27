@@ -1339,6 +1339,11 @@
     html-tags "^3.1.0"
     svg-tags "^1.0.0"
 
+"@vee-validate/rules@^4.7.4":
+  "integrity" "sha512-rWpmGKB/jy7/jbuAH/pfCYoCjiYDx77geNEaYeTl07eHo+2jL+j802Ttn85cTJsMUeXzRSUauepvNCpkVWV+aA=="
+  "resolved" "https://registry.npmjs.org/@vee-validate/rules/-/rules-4.7.4.tgz"
+  "version" "4.7.4"
+  
 "@vue/babel-plugin-transform-vue-jsx@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@vue/babel-plugin-transform-vue-jsx/-/babel-plugin-transform-vue-jsx-1.4.0.tgz#4d4b3d46a39ea62b7467dd6e26ce47f7ceafb2fe"

@@ -9,10 +9,10 @@
 import PageTitle from '@/components/layout/PageTitle'
 import AddPhotoForm from '@/components/layout/features/AddPhotoForm'
 export default {
-name: 'AddPhotoPage',
-components: {
-  PageTitle,
-  AddPhotoForm
-}
+  name: 'AddPhotoPage',
+  components: {
+    PageTitle,
+    AddPhotoForm
+  }
 }
 </script>
