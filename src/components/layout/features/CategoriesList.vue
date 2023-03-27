@@ -12,8 +12,8 @@
 import { mapGetters } from 'vuex'
 import Button from 'primevue/button'
 export default {
-  name: 'CategoriesList',
-  computed: mapGetters({ categories: 'Categories' }),
-  components: { Button }
+name: 'CategoriesList',
+computed: mapGetters('Categories', { categories: 'Categories' }),
+components: { Button }
 }
 </script>

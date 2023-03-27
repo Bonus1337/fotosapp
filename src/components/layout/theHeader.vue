@@ -21,7 +21,7 @@ import Button from 'primevue/button'
 import CategoriesList from './features/CategoriesList'
 export default {
   name: 'AppHeader',
-  computed: mapGetters({ categories: 'Categories' }),
+  computed: mapGetters('Categories', { categories: 'Categories' }),
   components: {
     Button,
     CategoriesList
